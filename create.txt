@@ -1,0 +1,29 @@
+create  table product(
+product_id varchar2(20) not nul,
+product_name varchar2(20) not nul,
+price number check(price>0)
+constraint pk_product primary(product_id));
+
+
+create  table customer(
+customer_id varchar2(20) not null,
+customer_name varchar2(20) not nul,
+customer_tel number
+constraint pk_ customer primarykey(customer_id));
+
+create table orders(
+customer_id varchar2(20),
+product_id varchar2(20),
+quantity number,
+total_amount number,
+constraint fg_product forgin key(customer_id)
+references customer(customer_id)
+constraint fg_product forgin key(product_id)
+references product
+constraint pk_prders primary key(customer_id , product_id))
+
+alter table product add category varchar2(20);
+alter table orders adddate default sysdate;
+
+
+
